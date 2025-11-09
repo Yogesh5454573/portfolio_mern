@@ -1,10 +1,18 @@
 import express from "express";
-import {addInfo,getAllInfo,getInfoById,updateInfo,deleteInfo } from "../controllers/infoController.js";
+import {
+  addInfo,
+  getAllInfo,
+  getInfoByToken,
+  updateInfoByToken,
+  deleteInfoByToken,
+} from "../controllers/infoController.js";
+
 const router = express.Router();
-router.post("/add", addInfo); 
-router.get("/all", getAllInfo); 
-router.get("/:id", getInfoById);
-router.put("/update/:id", updateInfo); 
-router.delete("/delete/:id", deleteInfo); 
+
+router.post("/add", addInfo); // Create
+router.get("/all", getAllInfo); // Get all
+router.get("/getInfo/:token", getInfoByToken); // Get by token
+router.put("/update/:token", updateInfoByToken); // Update by token
+router.delete("/delete/:token", deleteInfoByToken); // Delete by token
 
 export default router;

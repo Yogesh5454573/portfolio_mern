@@ -1,32 +1,25 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 
-const infoSchema = new mongoose.Schema(
-  {
-    name: 
-      { 
-        type: String, 
-        required: true
-      },
-    email: 
-      { 
-        type: String,
-        required: true
-      },
-    phone:
-      { 
-        type: String, 
-        required: true 
-        
-      },
-    message:
-     { 
-      type: String 
-     },
+const infoSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    default: () => uuidv4(),
+    unique: true
   },
-  { 
-    timestamps: true 
-  }
-);
+  token: {
+    type: String,
+    default: () => crypto.randomBytes(16).toString("hex"), 
+    unique: true
+  },
+  name: String,
+  email: String,
+  phone: String,
+  message: String
+}, 
+{ 
+  timestamps: true 
+});
 
-const Info = mongoose.model("Info", infoSchema);
-export default Info;
+export default mongoose.model("Info", infoSchema);
