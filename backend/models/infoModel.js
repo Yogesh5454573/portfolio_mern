@@ -23,7 +23,9 @@ const infoSchema = new mongoose.Schema(
       type: String 
      },
   },
-  { timestamps: true }
+  { 
+    timestamps: true 
+  }
 );
 
 const Info = mongoose.model("Info", infoSchema);

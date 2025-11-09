@@ -1,11 +1,10 @@
 import express from "express";
-import {addInfo, getAllInfo,  updateInfo, deleteInfo} from "../controllers/infoController.js";
- 
+import {addInfo,getAllInfo,getInfoById,updateInfo,deleteInfo } from "../controllers/infoController.js";
 const router = express.Router();
-
-router.post("/", addInfo);
-router.get("/", getAllInfo);
-router.put("/:id", updateInfo);
-router.delete("/:id", deleteInfo);
+router.post("/add", addInfo); 
+router.get("/all", getAllInfo); 
+router.get("/:id", getInfoById);
+router.put("/update/:id", updateInfo); 
+router.delete("/delete/:id", deleteInfo); 
 
 export default router;
